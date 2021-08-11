@@ -55,3 +55,13 @@ df['Common Neighbors'] = df.index.map(lambda edge: len(list(nx.common_neighbors(
 df1 = df[(df['weight'] == 0)|(df['weight'] == 1)]
 X = df1[['preferential attachment','Common Neighbors']]
 y = df1['weight']
+
+from sklearn.ensemble import GradientBoostingClassifier
+clf2 = GradientBoostingClassifier(learning_rate = 0.1, random_state = 0, n_estimators = 1000).fit(X, y)
+df['weight'] = df['weight'].fillna(2)
+dfNaN = df[df['weight'] == 2]
+X_test = dfNaN[['preferential attachment','Common Neighbors']]
+d = {'no.': dfNaN.index, 'probs': clf2.predict_proba(X_test)[:,1]}
+dfnew1 = pd.DataFrame(data=d).set_index('no.')
+del dfnew1.index.name
+return dfnew1['probs'].astype(np.float64)

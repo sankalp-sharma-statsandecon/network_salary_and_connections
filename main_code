@@ -32,13 +32,13 @@ del dfnew.index.name
 del dfnew.columns.name 
 dfnew['probs'].astype(np.float64)
 
-Results: 
+#Results: 
 
-1     0.00
-2     0.56
-5     0.92
-8     0.37
-14    0.09
+#1     0.00
+#2     0.56
+#5     0.92
+#8     0.37
+#14    0.09
 
 future_connections = pd.read_csv('Future_Connections.csv', index_col=0, converters={0: eval})
 

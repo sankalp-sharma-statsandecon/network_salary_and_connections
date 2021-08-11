@@ -15,3 +15,7 @@ We also predict future connections between employees of the network. The future 
 Using network G and future_connections, we identify the edges in future_connections with missing values and predict whether or not these edges will have a future connection.
 
 To accomplish this, we create a matrix of features for the edges found in future_connections using networkx, train a sklearn classifier on those edges in future_connections that have Future Connection data, and predict a probability of the edge being a future connection for those edges in future_connections where Future Connection is missing. The predictions are given as the probability of the corresponding edge being a future connection and the evaluation metric is the Area Under the ROC Curve (AUC).
+
+#################
+
+The multigraph.py file quickly demosntrates how to convert raw data to a multigraph. 
